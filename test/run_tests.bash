@@ -4,7 +4,7 @@ DONE="Verified - you are done"
 NOT_DONE="No - you are not done"
 
 main() {
-   for((x=1;x<=5;x++))
+   for((x=1;x<=6;x++))
    do
        if [[ ${x} -lt 10 ]]
        then
@@ -42,6 +42,11 @@ solution_for_scenario_04() {
 solution_for_scenario_05() {
     echo '^\d+ \d [Ff]a\w+ \w+ .*fuel cell.*' > answer.regex
 }
+
+solution_for_scenario_06() {
+    echo '(\d),(\d),(\g1|\g2) .*' > answer.regex
+}
+
 
 test_that_verification_fails_for_scenario() {
     if [[ $(bash scenario_${1}.bash --verify 2> /dev/null) == ${NOT_DONE} ]]

@@ -3,7 +3,7 @@
 main() {
 	if [[ ${1} == "--verify" ]]
 	then
-	    check_that_answer_greps_all_failed_that_mention_fuel_cells
+	    check_that_answer_greps_all_where_third_matches_first_or_second
 	else
 	    generate_description_file
 	    generate_help_file
@@ -13,9 +13,8 @@ main() {
 
 generate_description_file() {
 cat > description.txt <<EOF
-Write a regular expression that matches all failed tests where 
-the note (last column) mentions the fuel cells from 
-the file testdata_1.txt.
+Write a regular expression that matches all rows where the third
+number is equal to one of the first numbers from testdata_2.txt
 
 Put your regular expression into a file called answer.regex in
 the directory where you executed the scenario script.
@@ -28,21 +27,22 @@ EOF
 generate_help_file() {
 cat > help.txt <<EOF
 How to express digits.
-How to express words.
 How to express disjunctions OR Character Classes.
+How to express capture groups
 EOF
 }
 
-check_that_answer_greps_all_failed_that_mention_fuel_cells() {
+check_that_answer_greps_all_where_third_matches_first_or_second() {
     FACIT_FILE=$(mktemp)
     cat > ${FACIT_FILE} <<EOF
-4 7 failure germany 'fuel cells depleeted immediately - must have been old'
-8 6 Failure denmark 'spectrometer not calibrated properly - good fuel cells'
-9 5 failed denmark 'succeess on beam penetration - fuel cell died shortly after'
-17 6 failure denmark 'fuel cell failed during trial - backup successfully started'
+2,4,2 .    .  ......
+2,4,4 .    .  .    .
+2,4,2 ......  ......
+2,4,2 .    .  .    .
+2,4,4 .    .  .    .
 EOF
     ACTUAL_FILE=$(mktemp)
-    grep -P "$(< answer.regex)" testdata_1.txt > ${ACTUAL_FILE} 2> /dev/null
+    grep -P "$(< answer.regex)" testdata_2.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]
     then
