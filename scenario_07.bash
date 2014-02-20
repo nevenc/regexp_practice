@@ -25,10 +25,12 @@ EOF
 }
 
 generate_help_file() {
-cat > help.txt <<EOF
-Character Classes and Other Special Escapes
-Capture Groups
-Extended patterns - Look-Around Assertions
+cat > basic_help.txt <<EOF
+ Grouping things and hierarchical matching
+ Backreferences
+EOF
+cat > advanced_help.txt <<EOF
+ Extended patterns - Look-Around Assertions
 EOF
 }
 

@@ -6,10 +6,12 @@ EOF
 cat description.txt
 cat <<EOF
 =================================================================
-Regex cheat sheet        http://tinyurl.com/regex-cheat-sheet-mit
+PerlTut                    http://perldoc.perl.org/perlretut.html
+$(< basic_help.txt)
 
+PerlRe                        http://perldoc.perl.org/perlre.html 
+$(< advanced_help.txt)
 EOF
-cat help.txt
 cat <<EOF
 =================================================================
 Run this script as

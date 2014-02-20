@@ -26,10 +26,13 @@ EOF
 }
 
 generate_help_file() {
-cat > help.txt <<EOF
-How to express digits.
-How to express words.
-How to express disjunctions OR Character Classes.
+cat > basic_help.txt <<EOF
+ Using character classes
+ Matching this or that
+EOF
+cat > advanced_help.txt <<EOF
+ Regular Expressions - Metacharacters
+ Regular Expressions - Quantifiers
 EOF
 }
 

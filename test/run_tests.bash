@@ -18,7 +18,7 @@ main() {
        solution_for_scenario_${NUM}
        test_that_verification_passes_for_scenario ${NUM}
        rm answer.regex &> /dev/null
-       rm {description,help}.txt
+       rm {description,{basic,advanced}_help}.txt
        popd &> /dev/null
    done
 }
@@ -40,7 +40,7 @@ solution_for_scenario_04() {
 }
 
 solution_for_scenario_05() {
-    echo '^\d+ \d [Ff]a\w+ \w+ .*fuel cell.*' > answer.regex
+    echo '^\d+ \d [Ff]\w+ \w+ .*fuel cell.*' > answer.regex
 }
 
 solution_for_scenario_06() {

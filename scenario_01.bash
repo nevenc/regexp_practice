@@ -25,8 +25,11 @@ EOF
 }
 
 generate_help_file() {
-cat > help.txt <<EOF
-How to express digits.
+cat > basic_help.txt <<EOF
+EOF
+cat > advanced_help.txt <<EOF
+ Regular Expressions - Metacharacters
+ Regular Expressions - Quantifiers
 EOF
 }
 
