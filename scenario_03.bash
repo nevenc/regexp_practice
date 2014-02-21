@@ -13,9 +13,8 @@ main() {
 
 generate_description_file() {
 cat > description.txt <<EOF
-Write a regular expression that matches all tests that started
-at either 9 or 8 in the morning (second column) from the file 
-testdata_1.txt.
+Write a regular expression that matches all tests that where
+performed in sweden (4th column) from the file testdata_1.txt.
 
 Put your regular expression into a file called answer.regex in
 the directory where you executed the scenario script.
