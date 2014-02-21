@@ -3,7 +3,7 @@
 main() {
 	if [[ ${1} == "--verify" ]]
 	then
-	    check_that_answer_greps_all_tests_in_sweden
+	    check_that_answer_greps_all_successfull_tests_in_denmark_and_germany
 	else
 	    generate_description_file
 	    generate_help_file
@@ -33,7 +33,7 @@ How to express disjunctions OR Character Classes.
 EOF
 }
 
-check_that_answer_greps_all_tests_in_sweden() {
+check_that_answer_greps_all_successfull_tests_in_denmark_and_germany() {
     FACIT_FILE=$(mktemp)
     cat > ${FACIT_FILE} <<EOF
 3 6 success denmark 'spot on'
