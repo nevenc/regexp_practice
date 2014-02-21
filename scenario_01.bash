@@ -41,7 +41,7 @@ check_that_answer_greps_all_6_o_clock_tests() {
 29 6 failure Sweden 'cabling from emitter to phasetizer caught fire'
 EOF
     ACTUAL_FILE=$(mktemp)
-    grep -P "$(< answer.regex)" testdata_1.txt > ${ACTUAL_FILE} 2> /dev/null
+    grep -P "$(< answer.regex)" testdata_1.txt 1> ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]
     then
