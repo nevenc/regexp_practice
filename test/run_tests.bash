@@ -4,7 +4,7 @@ DONE="Verified - you are done"
 NOT_DONE="No - you are not done"
 
 main() {
-   for((x=1;x<=8;x++))
+   for((x=1;x<=9;x++))
    do
        if [[ ${x} -lt 10 ]]
        then
@@ -53,6 +53,10 @@ solution_for_scenario_07() {
 
 solution_for_scenario_08() {
     echo '(\d|\w)\g1{2}' > answer.regex
+}
+
+solution_for_scenario_09() {
+    echo "((?'l'\w)((2\g{l}{2})|(4\g{l}{4})))|(?'n'\d)((1\g{n})|(3\g{n}{3}))" > answer.regex
 }
 
 test_that_verification_fails_for_scenario() {

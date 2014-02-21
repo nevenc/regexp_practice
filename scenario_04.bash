@@ -21,7 +21,7 @@ Put your regular expression into a file called answer.regex in
 the directory where you executed the scenario script.
 
 Your answer will be executed the following way by the system.
-             grep -P "\$(< answer.regex)" testdata_1.txt
+             grep -P "\$(< answer.regex)" testdata_4.txt
 EOF
 }
 
