@@ -13,7 +13,7 @@ main() {
 
 generate_description_file() {
 cat > description.txt <<EOF
-Write an regular expression that matches all tests that started
+Write a regular expression that matches all tests that started
 at 6 in the morning (second column) from the file testdata_1.txt.
 
 Put your regular expression into a file called answer.regex in
