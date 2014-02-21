@@ -4,7 +4,7 @@ DONE="Verified - you are done"
 NOT_DONE="No - you are not done"
 
 main() {
-   for((x=1;x<=2;x++))
+   for((x=1;x<=3;x++))
    do
        if [[ ${x} -lt 10 ]]
        then
@@ -29,6 +29,10 @@ solution_for_scenario_01() {
 
 solution_for_scenario_02() {
     echo '^\d+ [89] .*' > answer.regex
+}
+
+solution_for_scenario_03() {
+    echo '^\d+ \d \w+ [Ss]weden .*' > answer.regex
 }
 
 test_that_verification_fails_for_scenario() {
