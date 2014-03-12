@@ -35,7 +35,7 @@ EOF
 }
 
 check_that_answer_greps_all_that_does_not_repeat_number_three_times() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 1,2,1 ..... ...... ...... ...... .....  .....  .......
 3,3,1 .     .    . .    . .    . .      .         .
@@ -43,7 +43,7 @@ check_that_answer_greps_all_that_does_not_repeat_number_three_times() {
 8,4,3 .     .    . .   .  .   .  .      .         .
 0,2,1 ..... ...... .    . .    . .....  .....     .
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_3.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]

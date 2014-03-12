@@ -38,7 +38,7 @@ EOF
 }
 
 check_that_answer_greps_all_where_third_matches_first_or_second() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 2,4,2 .    .  ......
 2,4,4 .    .  .    .
@@ -46,7 +46,7 @@ check_that_answer_greps_all_where_third_matches_first_or_second() {
 2,4,2 .    .  .    .
 2,4,4 .    .  .    .
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_2.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]

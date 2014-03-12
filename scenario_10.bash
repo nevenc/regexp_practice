@@ -38,7 +38,7 @@ EOF
 }
 
 check_that_answer_greps_all_okay_passwords() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 aBcdefgh1jklmnop  ..  .....  ..... .......
 Abcde7gh1jklmnop   .      .      .       .
@@ -48,7 +48,7 @@ abcdefghiklmnoP4   .      .      .    .
 abCd3fgh1jklNnop   .      .      .   .
 aBCDEFGHIJKLMN0P  ... .....  .....  .     
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_6.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE} &> /dev/null
     if [[ $? == 0 ]]

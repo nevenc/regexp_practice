@@ -40,7 +40,7 @@ EOF
 }
 
 check_that_answer_greps_all_matching() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 124eillka2aaaall .   . ..... .     .       ....   ....  .   . .....
 aabc773223222aal .   . .     .     .       .   . .    . ..  . .
@@ -48,7 +48,7 @@ aabcei717bceillk . . . ..... .     .       .   . .    . . . . .....
 abcellb4bbbbabcl . . . .     .     .       .   . .    . .  .. .
 aaeill03000ab1el  . .  ..... ..... .....   ....   ....  .   . .....
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_5.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE} &> /dev/null
     if [[ $? == 0 ]]

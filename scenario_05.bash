@@ -36,14 +36,14 @@ EOF
 }
 
 check_that_answer_greps_all_failed_that_mention_fuel_cells() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 4 7 failure germany 'fuel cells depleeted immediately - must have been old'
 8 6 Failure denmark 'spectrometer not calibrated properly - good fuel cells'
 9 5 failed denmark 'succeess on beam penetration - fuel cell died shortly after'
 17 6 failure denmark 'fuel cell failed during trial - backup successfully started'
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_1.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]

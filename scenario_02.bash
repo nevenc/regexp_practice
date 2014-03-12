@@ -36,7 +36,7 @@ EOF
 }
 
 check_that_answer_greps_all_8_or_9_o_clock_tests() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 1 9 failure sweden 'second capacitor held steady, but beam did not penetrate'
 5 9 Failure denmark 'insect on targeting lens - exterminator booked for cleanup'
@@ -52,7 +52,7 @@ check_that_answer_greps_all_8_or_9_o_clock_tests() {
 28 8 success Denmark 'new fuel cells give a steady beam output'
 30 8 Failed denmark 'we don't know why'
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_1.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]

@@ -37,7 +37,7 @@ EOF
 }
 
 check_that_answer_greps_all_that_has_a_tripple() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 234723478aaa121bb .   .  .....  .....  .....
 23477723478a121bb ..  .    .    .      .
@@ -45,7 +45,7 @@ check_that_answer_greps_all_that_has_a_tripple() {
 2234723478a121bbb .  ..    .    .      .
 234723478a11121bb .   .  .....  .....  .....
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_4.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE} &> /dev/null
     if [[ $? == 0 ]]

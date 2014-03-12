@@ -34,7 +34,7 @@ EOF
 }
 
 check_that_answer_greps_all_6_o_clock_tests() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 3 6 success denmark 'spot on'
 8 6 Failure denmark 'spectrometer not calibrated properly - good fuel cells'
@@ -43,7 +43,7 @@ check_that_answer_greps_all_6_o_clock_tests() {
 26 6 success germany 'all ok'
 29 6 failure Sweden 'cabling from emitter to phasetizer caught fire'
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_1.txt 1> ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]

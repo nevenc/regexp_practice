@@ -35,7 +35,7 @@ EOF
 }
 
 check_that_answer_greps_all_tests_in_sweden() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 1 9 failure sweden 'second capacitor held steady, but beam did not penetrate'
 2 7 failure sweden 'beam succeeded to penetrate material, but not evaporate target'
@@ -48,7 +48,7 @@ check_that_answer_greps_all_tests_in_sweden() {
 25 7 success Sweden 'weak fuel cells again - we need them to be more stable'
 29 6 failure Sweden 'cabling from emitter to phasetizer caught fire'
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_1.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]

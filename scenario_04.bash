@@ -37,7 +37,7 @@ EOF
 }
 
 check_that_answer_greps_all_successfull_tests_in_denmark_and_germany() {
-    FACIT_FILE=$(mktemp)
+    FACIT_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     cat > ${FACIT_FILE} <<EOF
 3 6 success denmark 'spot on'
 7 7 Success germany 'failure in the coolant - but overal test success'
@@ -51,7 +51,7 @@ check_that_answer_greps_all_successfull_tests_in_denmark_and_germany() {
 27 9 Succeeded Germany 'nothing out of the ordinary'
 28 8 success Denmark 'new fuel cells give a steady beam output'
 EOF
-    ACTUAL_FILE=$(mktemp)
+    ACTUAL_FILE=$(mktemp /tmp/REGEXPRACTICE_XXXXXXXX)
     grep -P "$(< answer.regex)" testdata_1.txt > ${ACTUAL_FILE} 2> /dev/null
     diff -q ${FACIT_FILE} ${ACTUAL_FILE}  &> /dev/null
     if [[ $? == 0 ]]
